@@ -12,18 +12,19 @@ Deno.serve(async () => {
   const { data, error } = await supabase.auth.admin.generateLink({
     type: "magiclink",
     email,
-    options: {
-      redirectTo: "http://localhost:3000/confirm",
-    },
   });
 
-  console.log({ data, error });
+  if (error) {
+    return new Response(
+      JSON.stringify({ error: error.message }),
+      { status: error.status, headers: { "Content-Type": "application/json" } },
+    );
+  }
 
   return new Response(
     JSON.stringify({
-      url: `${data?.properties?.action_link}/confirm&email=${
-        encodeURIComponent(email)
-      }`,
+      url:
+        `http://localhost:3000/confirm?token=${data?.properties?.hashed_token}`,
     }),
     { headers: { "Content-Type": "application/json" } },
   );

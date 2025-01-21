@@ -2,11 +2,8 @@
 const client = useSupabaseClient()
 const user = useSupabaseUser()
 
-// const redirectTo = `${useRuntimeConfig().public.baseUrl}/confirm`
-
 const logout = async () => {
   await client.auth.signOut()
-  navigateTo('/')
 }
 </script>
 

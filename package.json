@@ -12,8 +12,7 @@
     "supabase:stop": "supabase stop"
   },
   "dependencies": {
-    "@nuxt/devtools": "^2.0.0-beta.3",
-    "@nuxtjs/supabase": "1.4.6",
+    "@nuxtjs/supabase": "^1.4.6",
     "nuxt": "^3.15.2",
     "vue": "latest",
     "vue-router": "latest"
